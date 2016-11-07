@@ -5,9 +5,11 @@
  */
 package celsiuscalculator;
 
+import javax.swing.JOptionPane;
+
 /**
  *
- * @author Genna1
+ * @author Jenna
  */
 public class CFCalculator extends javax.swing.JFrame {
 
@@ -92,8 +94,13 @@ public class CFCalculator extends javax.swing.JFrame {
 
     private void btnCalculateCelsiusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculateCelsiusActionPerformed
         CelsiusCalculator cc = new CelsiusCalculator();
+        try {
         double fahrenheit = Double.parseDouble(txtFahrenheitTemp.getText());
         lblCalculatedCelsiusTemp.setText(String.valueOf(cc.calculateCelsius(fahrenheit)));
+        } catch (NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(null, "Cannot accept letters!");
+        }
+        
     }//GEN-LAST:event_btnCalculateCelsiusActionPerformed
 
     /**

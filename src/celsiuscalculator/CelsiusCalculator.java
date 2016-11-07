@@ -13,7 +13,7 @@ public class CelsiusCalculator {
         return fahrenheitTemp;
     }
 
-    public final void setFahrenheitTemp(double fahrenheitTemp) {
+    public final void setFahrenheitTemp(double fahrenheitTemp) throws NumberFormatException {
         this.fahrenheitTemp = fahrenheitTemp;
     }
 
