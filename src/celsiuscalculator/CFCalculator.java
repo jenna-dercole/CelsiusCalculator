@@ -29,26 +29,71 @@ public class CFCalculator extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        lblCalculatedCelsiusTemp = new javax.swing.JLabel();
-        txtFahrenheitTemp = new javax.swing.JTextField();
-        btnCalculateCelsius = new javax.swing.JButton();
-        lblCelsiusTemp = new javax.swing.JLabel();
+        tempCalculator = new javax.swing.ButtonGroup();
+        lblEnterTemp = new javax.swing.JLabel();
+        lblCalculatedTemp = new javax.swing.JLabel();
+        txtTemperature = new javax.swing.JTextField();
+        btnCalculateTemp = new javax.swing.JButton();
+        lblTempResult = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        rboFahrenheitToCelsius = new javax.swing.JRadioButton();
+        rboCelsiusToFahrenheit = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Enter fahrenheit temperature: ");
+        lblEnterTemp.setText("Enter temperature: ");
 
-        lblCalculatedCelsiusTemp.setText("     ");
+        lblCalculatedTemp.setText("     ");
 
-        btnCalculateCelsius.setText("Calculate Celsius");
-        btnCalculateCelsius.addActionListener(new java.awt.event.ActionListener() {
+        btnCalculateTemp.setText("Calculate Temperature");
+        btnCalculateTemp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCalculateCelsiusActionPerformed(evt);
+                btnCalculateTempActionPerformed(evt);
             }
         });
 
-        lblCelsiusTemp.setText("Celsius temperature: ");
+        lblTempResult.setText("Temperature: ");
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Temperature Conversion: "));
+
+        tempCalculator.add(rboFahrenheitToCelsius);
+        rboFahrenheitToCelsius.setSelected(true);
+        rboFahrenheitToCelsius.setText("Fahrenheit to Celsius");
+        rboFahrenheitToCelsius.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rboFahrenheitToCelsiusActionPerformed(evt);
+            }
+        });
+
+        tempCalculator.add(rboCelsiusToFahrenheit);
+        rboCelsiusToFahrenheit.setText("Celsius to Fahrenheit");
+        rboCelsiusToFahrenheit.setToolTipText("");
+        rboCelsiusToFahrenheit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rboCelsiusToFahrenheitActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rboCelsiusToFahrenheit)
+                    .addComponent(rboFahrenheitToCelsius))
+                .addContainerGap(43, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(rboFahrenheitToCelsius)
+                .addGap(18, 18, 18)
+                .addComponent(rboCelsiusToFahrenheit)
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -57,51 +102,64 @@ public class CFCalculator extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtFahrenheitTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(lblCelsiusTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblCalculatedCelsiusTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(38, 38, 38))))
+                        .addGap(91, 91, 91)
+                        .addComponent(lblTempResult, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblCalculatedTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(104, 104, 104)
-                        .addComponent(btnCalculateCelsius, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(131, 131, 131)
+                        .addComponent(btnCalculateTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblEnterTemp)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtTemperature))
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtFahrenheitTemp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblEnterTemp)
+                    .addComponent(txtTemperature, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btnCalculateCelsius)
+                .addComponent(btnCalculateTemp)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCalculatedCelsiusTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCelsiusTemp))
-                .addContainerGap(29, Short.MAX_VALUE))
+                    .addComponent(lblTempResult)
+                    .addComponent(lblCalculatedTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCalculateCelsiusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculateCelsiusActionPerformed
-        CelsiusCalculator cc = new CelsiusCalculator();
+    private void btnCalculateTempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculateTempActionPerformed
+        
         try {
-        double fahrenheit = Double.parseDouble(txtFahrenheitTemp.getText());
-        lblCalculatedCelsiusTemp.setText(String.valueOf(cc.calculateCelsius(fahrenheit)));
+        double temperature = Double.parseDouble(txtTemperature.getText());
+        lblCalculatedTemp.setText(String.valueOf(tcs.calculateTemp(temperature)));
         } catch (NumberFormatException nfe) {
             JOptionPane.showMessageDialog(null, "Cannot accept letters!");
         }
         
-    }//GEN-LAST:event_btnCalculateCelsiusActionPerformed
+    }//GEN-LAST:event_btnCalculateTempActionPerformed
+
+    private void rboFahrenheitToCelsiusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rboFahrenheitToCelsiusActionPerformed
+        TemperatureCalculationStrategy fahrenheit = new FahrenheitCalculator();
+        fahrenheit.setTempCalcStrategy(fahrenheit);
+    }//GEN-LAST:event_rboFahrenheitToCelsiusActionPerformed
+
+    private void rboCelsiusToFahrenheitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rboCelsiusToFahrenheitActionPerformed
+        TemperatureCalculationStrategy celsius = new CelsiusCalculator();
+        celsius.setTempCalcStrategy(celsius);
+    }//GEN-LAST:event_rboCelsiusToFahrenheitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,10 +197,14 @@ public class CFCalculator extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCalculateCelsius;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel lblCalculatedCelsiusTemp;
-    private javax.swing.JLabel lblCelsiusTemp;
-    private javax.swing.JTextField txtFahrenheitTemp;
+    private javax.swing.JButton btnCalculateTemp;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblCalculatedTemp;
+    private javax.swing.JLabel lblEnterTemp;
+    private javax.swing.JLabel lblTempResult;
+    private javax.swing.JRadioButton rboCelsiusToFahrenheit;
+    private javax.swing.JRadioButton rboFahrenheitToCelsius;
+    private javax.swing.ButtonGroup tempCalculator;
+    private javax.swing.JTextField txtTemperature;
     // End of variables declaration//GEN-END:variables
 }

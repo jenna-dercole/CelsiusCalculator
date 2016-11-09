@@ -5,9 +5,10 @@ package celsiuscalculator;
  *
  * @author Jenna
  */
-public class CelsiusCalculator {
+public class CelsiusCalculator implements TemperatureCalculationStrategy {
     private double celsiusTemp;
     private double fahrenheitTemp;
+    private TemperatureCalculationStrategy tcs;
 
     public final double getFahrenheitTemp() {
         return fahrenheitTemp;
@@ -25,7 +26,13 @@ public class CelsiusCalculator {
         this.celsiusTemp = celsiusTemp;
     }
     
-    public final double calculateCelsius(double fahrenheit) {
+     @Override
+    public final void setTempCalcStrategy(TemperatureCalculationStrategy tcs) {
+        this.tcs = tcs;
+    }
+
+    @Override
+    public final double calculateTemp(double fahrenheit) {
         celsiusTemp = (fahrenheit - 32) * 5 / 9;
         return celsiusTemp;
     }
