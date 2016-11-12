@@ -12,7 +12,4 @@ package celsiuscalculator;
 public interface TemperatureCalculationStrategy {
     public abstract double calculateTemp(double temp);
     
-    public abstract void setTempCalcStrategy(TemperatureCalculationStrategy tcs);
-    
-    public abstract void getTempCalcStrategy(TemperatureCalculationStrategy tcs);
 }

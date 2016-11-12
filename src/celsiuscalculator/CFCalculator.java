@@ -6,6 +6,7 @@
 package celsiuscalculator;
 
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
 
 /**
  *
@@ -100,24 +101,23 @@ public class CFCalculator extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(90, 90, 90)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(91, 91, 91)
-                        .addComponent(lblTempResult, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(lblTempResult, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblCalculatedTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(131, 131, 131)
-                        .addComponent(btnCalculateTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblEnterTemp)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtTemperature))
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(89, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(lblEnterTemp)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(txtTemperature))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(90, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnCalculateTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(119, 119, 119))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,7 +129,7 @@ public class CFCalculator extends javax.swing.JFrame {
                     .addComponent(lblEnterTemp)
                     .addComponent(txtTemperature, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btnCalculateTemp)
+                .addComponent(btnCalculateTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTempResult)
@@ -141,10 +141,17 @@ public class CFCalculator extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCalculateTempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculateTempActionPerformed
-        
         try {
-        double temperature = Double.parseDouble(txtTemperature.getText());
-        lblCalculatedTemp.setText(String.valueOf(tcs.calculateTemp(temperature)));
+        if(rboCelsiusToFahrenheit.isSelected()) {
+            TemperatureCalculationStrategy tcs = new FahrenheitCalculator();
+            double temperature = Double.parseDouble(txtTemperature.getText());
+            lblCalculatedTemp.setText(String.valueOf(tcs.calculateTemp(temperature)));
+        } 
+        if (rboFahrenheitToCelsius.isSelected()) {
+            TemperatureCalculationStrategy tcs = new CelsiusCalculator();
+            double temperature = Double.parseDouble(txtTemperature.getText());
+            lblCalculatedTemp.setText(String.valueOf(tcs.calculateTemp(temperature)));
+        }
         } catch (NumberFormatException nfe) {
             JOptionPane.showMessageDialog(null, "Cannot accept letters!");
         }
@@ -152,13 +159,12 @@ public class CFCalculator extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCalculateTempActionPerformed
 
     private void rboFahrenheitToCelsiusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rboFahrenheitToCelsiusActionPerformed
-        TemperatureCalculationStrategy fahrenheit = new FahrenheitCalculator();
-        fahrenheit.setTempCalcStrategy(fahrenheit);
+        //get selection and set to event. store in variable. pass variable to one of two calc constructors.
+            TemperatureCalculationStrategy tcs = new FahrenheitCalculator();
     }//GEN-LAST:event_rboFahrenheitToCelsiusActionPerformed
 
     private void rboCelsiusToFahrenheitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rboCelsiusToFahrenheitActionPerformed
-        TemperatureCalculationStrategy celsius = new CelsiusCalculator();
-        celsius.setTempCalcStrategy(celsius);
+            TemperatureCalculationStrategy tcs = new CelsiusCalculator();
     }//GEN-LAST:event_rboCelsiusToFahrenheitActionPerformed
 
     /**

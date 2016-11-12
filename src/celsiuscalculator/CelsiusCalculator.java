@@ -13,6 +13,7 @@ public class CelsiusCalculator implements TemperatureCalculationStrategy {
     public final double getFahrenheitTemp() {
         return fahrenheitTemp;
     }
+    
 
     public final void setFahrenheitTemp(double fahrenheitTemp) throws NumberFormatException {
         this.fahrenheitTemp = fahrenheitTemp;
@@ -24,11 +25,6 @@ public class CelsiusCalculator implements TemperatureCalculationStrategy {
 
     public final void setCelsiusTemp(double celsiusTemp) {
         this.celsiusTemp = celsiusTemp;
-    }
-    
-     @Override
-    public final void setTempCalcStrategy(TemperatureCalculationStrategy tcs) {
-        this.tcs = tcs;
     }
 
     @Override
